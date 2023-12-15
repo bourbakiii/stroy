@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->middleware('api')->controller(UsersController::class)->group(function () {
     Route::post('signup', 'create');
-//    Route::post('login', 'login')->name('login');
-//    Route::post('refresh', 'refresh');
+    Route::post('signin', 'login');
+    Route::post('refresh', 'refresh');
 //    Route::post('send-reset-code', 'sendResetCode');
 //    Route::post('reset-password', 'resetPassword');
 });
