@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuildingsController;
+use App\Http\Controllers\TypesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WorkersController;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,9 @@ Route::prefix('builidings')->middleware('api')->controller(BuildingsController::
 Route::prefix('workers')->middleware('api')->controller(WorkersController::class)->group(function () {
     Route::post('/', 'create');
 });
+
+
+Route::prefix('types')->controller(TypesController::class)->group(function () {
+    Route::get('/users', 'getTypesOfUsers');
+});
+

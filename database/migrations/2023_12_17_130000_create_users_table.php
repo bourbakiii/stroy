@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('middle_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->unsignedBigInteger('user_type_id');
+            $table->foreign('user_type_id')->references('id')->on('type_of_users');
             $table->timestamps();
         });
     }
