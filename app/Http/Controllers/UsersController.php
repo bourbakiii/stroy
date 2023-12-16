@@ -20,12 +20,10 @@ class UsersController extends Controller
             'middle_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|string|email:max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
             'user_type_id'=>'required|exists:type_of_users,id'
         ]);
-
         if ($validator->fails()) return ResponsesHelper::validationErrors($validator->errors());
-
         try {
             $user = User::create([
                 ...$request->all(),
