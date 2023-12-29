@@ -26,8 +26,11 @@ Route::prefix('auth')->middleware('api')->controller(UsersController::class)->gr
 });
 
 
-Route::prefix('builidings')->middleware('api')->controller(BuildingsController::class)->group(function () {
+Route::prefix('buildings')->middleware('api')->controller(BuildingsController::class)->group(function () {
+    Route::get('/', 'getAll');
     Route::post('/', 'create');
+    Route::put('/', 'edit');
+    Route::get('/{id}', 'findById');
 //    Route::post('signin', 'login');
 //    Route::post('refresh', 'refresh');
 //    Route::post('send-reset-code', 'sendResetCode');

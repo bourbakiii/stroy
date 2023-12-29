@@ -14,14 +14,13 @@ class UsersController extends Controller
 {
     public function create(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'middle_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|string|email:max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'user_type_id'=>'required|exists:type_of_users,id'
+            'user_type_id' => 'required|exists:type_of_users,id'
         ]);
         if ($validator->fails()) return ResponsesHelper::validationErrors($validator->errors());
         try {
@@ -38,7 +37,7 @@ class UsersController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'password' => 'required|string'
         ]);
         if ($validator->fails()) return ResponsesHelper::validationErrors($validator->errors());
