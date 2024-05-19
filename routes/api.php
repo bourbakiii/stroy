@@ -38,11 +38,15 @@ Route::prefix('buildings')->middleware('api')->controller(BuildingsController::c
 });
 
 Route::prefix('workers')->middleware('api')->controller(WorkersController::class)->group(function () {
+    Route::get('/', 'getAll');
     Route::post('/', 'create');
+    Route::put('/', 'edit');
+    Route::get('/{id}', 'findById');
 });
 
 
 Route::prefix('types')->controller(TypesController::class)->group(function () {
     Route::get('/users', 'getTypesOfUsers');
+    Route::get('/workers', 'getTypesOfWorkers');
 });
 

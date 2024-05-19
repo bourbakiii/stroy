@@ -12,6 +12,10 @@ class Worker extends Model
         'name',
         'type_id',
         'age',
-        'gender'
+        'gender',
     ];
+    public function typeOfWorker()
+    {
+        return $this->belongsTo(TypeOfWorkers::class, 'type_id');
+    }
 }
