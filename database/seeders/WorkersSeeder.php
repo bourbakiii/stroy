@@ -15,16 +15,16 @@ class WorkersSeeder extends Seeder
     {
         DB::table('workers')->insert([
             [
-            'name' => 'Мозлов Имран Асламович',
-            'type_id' => '1',
-            'age' => '21',
-            'gender' => '1',
+                'name' => 'Мозлов Имран Асламович',
+                'type_id' => '1',
+                'age' => '21',
+                'gender' => '1',
             ],
             [
-            'name' => 'Хадзарагов Савва Аркадиевич',
-            'type_id' => '2',
-            'age' => '16',
-            'gender' => '1',
+                'name' => 'Хадзарагов Савва Аркадиевич',
+                'type_id' => '2',
+                'age' => '16',
+                'gender' => '1',
             ],
             [
                 'name' => 'Белик Антон Сергеевич',

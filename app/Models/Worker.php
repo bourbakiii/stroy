@@ -18,4 +18,9 @@ class Worker extends Model
     {
         return $this->belongsTo(TypeOfWorkers::class, 'type_id');
     }
+
+    public function brigades()
+    {
+        return $this->hasManyThrough(Brigade::class, BrigadesConnection::class, 'worker_id', 'id', 'id', 'brigade_id');
+    }
 }

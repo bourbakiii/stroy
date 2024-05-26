@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrigadesController;
 use App\Http\Controllers\BuildingsController;
 use App\Http\Controllers\TypesController;
 use App\Http\Controllers\UsersController;
@@ -43,6 +44,14 @@ Route::prefix('workers')->middleware('api')->controller(WorkersController::class
     Route::put('/', 'edit');
     Route::get('/{id}', 'findById');
 });
+
+Route::prefix('brigades')->middleware('api')->controller(BrigadesController::class)->group(function () {
+    Route::get('/', 'getAll');
+    Route::post('/', 'create');
+    Route::put('/', 'edit');
+    Route::get('/{id}', 'findById');
+});
+
 
 
 Route::prefix('types')->controller(TypesController::class)->group(function () {

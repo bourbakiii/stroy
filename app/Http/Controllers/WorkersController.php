@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class WorkersController extends Controller
 {
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'type_id' => 'required|exists:type_of_workers,id',
             'age' => 'required|int',
             'gender' => 'required|in:0,1',
         ]);
-        if ($validator->fails()) return ResponsesHelper::validationErrors($validator->errors());
+        if ($validator->fails())
+            return ResponsesHelper::validationErrors($validator->errors());
 
         return $worker = Worker::create($request->all());
     }
@@ -30,13 +32,16 @@ class WorkersController extends Controller
             'age' => 'required|int',
             'gender' => 'required|in:0,1',
         ]);
-        if ($validator->fails()) return ResponsesHelper::validationErrors($validator->errors());
+        if ($validator->fails())
+            return ResponsesHelper::validationErrors($validator->errors());
 
-        if(!$worker = worker::where('id', $request->id)->first()) return ResponsesHelper::error('Worker not founded', 404);
+        if (!$worker = worker::where('id', $request->id)->first())
+            return ResponsesHelper::error('Worker not founded', 404);
         $worker->update($request->all());
         return ResponsesHelper::success("Success", 200, $worker);
     }
-    public function getAll(Request $request){
+    public function getAll(Request $request)
+    {
         return ResponsesHelper::success("Success", 200, Worker::with('typeOfWorker')->get());
     }
     public function findById(Request $request)
