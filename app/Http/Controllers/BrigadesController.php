@@ -73,7 +73,5 @@ class BrigadesController extends Controller
             ]);
         }
         return ResponsesHelper::success("Success", 200, $b_connection->brigade_id);
-
-
     }
 }
